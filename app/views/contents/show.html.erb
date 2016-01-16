@@ -1,0 +1,15 @@
+<h1>Contents#show</h1>
+<p>Find me in app/views/contents/show.html.erb</p>
+<h4>タイトル</h4>
+<%= @content.title %>
+<h4>内容</h4>
+<%= @content.body %>
+<h4>日付</h4>
+<%= @content.day %>
+<h4>場所</h4>
+<%= @content.place %>
+<h3>コメント</h3>
+<% @comments.each do |comment| %>
+<%= comment.body %>
+<% end %>
+<p><%= link_to "一覧に戻る", user_contents_path %></p>

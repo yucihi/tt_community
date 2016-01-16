@@ -1,0 +1,13 @@
+<h1>Contents#edit</h1>
+<p>Find me in app/views/contents/edit.html.erb</p>
+<%= form_for @content, :url => user_content_path(current_user,@content) do |f| %>
+<p><%= f.label :title, "タイトル" %></p>
+<%= f.text_field :title %>
+<p><%= f.label :body, "内容" %></p>
+<%= f.text_field :body %>
+<p><%= f.label :day, "日付" %></p>
+<%= f.date_select :day %>
+<p><%= f.label :place, "場所" %></p>
+<%= f.text_field :place %>
+<p><%= f.submit "変更します"	%></p>
+<% end %>
