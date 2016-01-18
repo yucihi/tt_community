@@ -1,14 +1,39 @@
-<h1>Contents#new</h1>
-<p>Find me in app/views/contents/new.html.erb</p>
-<%= form_for @content, :url => user_contents_path do |f| %>
-<p><%= f.label :title, "タイトル" %></p>
-<%= f.text_field :title %>
-<p><%= f.label :body, "内容" %></p>
-<%= f.text_field :body %>
-<p><%= f.label :day, "日付" %></p>
-<%= f.date_select :day %>
-<p><%= f.label :place, "場所" %></p>
-<%= f.text_field :place %>
-<p><%= f.submit "募集を登録"	%></p>
-<% end %>
+<h1>新規投稿</h1>
+<div class="col-sm-12">
+	<%= form_for @content, :url => user_contents_path do |f| %>
+	<div class="form-group row">
+		<span class="col-sm-3">
+			<%= f.label :title, "タイトル" %>
+		</span>
+		<span class="col-sm-9">
+			<%= f.text_field :title,:class => "form-control" %>
+		</span>
+	</div>
+	<div class="form-group row">
+		<span class="col-sm-3">
+			<%= f.label :body, "内容" %>
+		</span>
+		<span class="col-sm-9">
+			<%= f.text_area :body,:class => "form-control",:rows => "10" %>
+		</span>
+	</div>
+	<div class="form-group row">
+		<span class="col-sm-3">
+			<%= f.label :day, "日付" %>
+		</span>
+		<span class="col-sm-9">
+			<%= f.date_select :day %>
+		</span>
+	</div>
+	<div class="form-group row">
+		<span class="col-sm-3">
+			<%= f.label :place, "場所" %>
+		</span>
+		<span class="col-sm-9">
+			<%= f.text_field :place,:class => "form-control" %>
+		</span>
+	</div>
+	<p class="text-right"><%= f.submit "募集を登録"	,:class => "btn btn-default"%></p>
+	<% end %>
+</div>
 

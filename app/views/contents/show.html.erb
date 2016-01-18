@@ -48,6 +48,5 @@
   <p><%= f.submit "コメントを投稿", :class => "pull-right"%></p>
 <% end %>
 <% else %>
-  <p>コメントを投稿するにはログインしてください</p>
+  <p>コメントを投稿するには<%= link_to "ログイン", new_user_session_path %>してください</p>
 <% end %>
-  <p><%= link_to "一覧に戻る", user_contents_path %></p>

@@ -1,13 +1,16 @@
 <h1>自分のコメント一覧</h1>
-<table class="col-sm-8" border="1">
+<table class="col-sm-8 table">
 	<tr>
 		<th>コメント</th>
 		<th>コメント先</th>
+		<th>操作</th>
 	</tr>
 	<% @comments.each do |comment| %>
 	<tr>
 	  <td><%= link_to comment.body, user_content_path(Content.find(comment.content_id).user_id,comment.content_id) %></td>
 	  <td><%= link_to Content.find(comment.content_id).title, user_content_path(Content.find(comment.content_id).user_id,comment.content_id) %></td>
+	  <td><%= link_to "編集",edit_user_content_comment_path(current_user,Content.find(comment.content_id).id,comment)%>&nbsp;
+	  <%= link_to "削除",user_content_comment_path(current_user,Content.find(comment.content_id).id,comment),:method => :delete,data: {confirm: "本当に削除しますか?"} %></td>
 	  </tr>
 	  <% end %>
 </table>

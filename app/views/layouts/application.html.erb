@@ -76,6 +76,7 @@
               <ul class="nav nav-list">
                 <li><%= link_to "プロフィール",user_profile_path(current_user,current_user.profile) %></li>
                 <li><%= link_to "練習相手を募集する",new_user_content_path(current_user) %></li>
+                <li><%= link_to "自分の募集一覧", user_contents_path(current_user)  %></li>
                 <li><%= link_to "自分のコメント一覧", user_my_comments_index_path(current_user)  %></li>
               </ul>
               <% else %>

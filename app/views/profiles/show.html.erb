@@ -1,26 +1,31 @@
 <h1><%= current_user.profile.name %>さんのプロフィール</h1>
-<table>
-<tr>
-<td>名前</td>
-<td><%= @profile.name %></td>
-</tr>
-<tr>
-<td>性別</td>
-<td><%= @profile.sex %></td>
-</tr>
-<tr>
-<td>生年月日</td>
-<td><%= @profile.birthday %></td>
-</tr>
-<tr>
-<td>チーム名</td>
-<td><%= @profile.team %></td>
-</tr>
-<tr>
-<td>地域</td>
-<td><%= @profile.place %></td>
-</tr>
-</table>
+<div class="row">
+  <table class="table table-striped col-sm-6">
+    <tr>
+      <td>名前</td>
+      <td><%= @profile.name %></td>
+    </tr>
+    <tr>
+      <td>性別</td>
+      <td><%= @profile.sex %></td>
+    </tr>
+    <tr>
+      <td>生年月日</td>
+      <td><%= @profile.birthday %></td>
+    </tr>
+    <tr>
+      <td>チーム名</td>
+      <td><%= @profile.team %></td>
+    </tr>
+    <tr>
+      <td>地域</td>
+      <td><%= @profile.place %></td>
+    </tr>
+  </table>
+</div>
+<div class="row">
 <p><%= link_to "プロフィールを変更", edit_user_profile_path(current_user,@profile)  %></p>
-<p><%= link_to "自分の募集一覧", user_contents_path(current_user)  %>
-<p><%= link_to "トップに戻る", root_path %></p>
+</div>
+<div class="row">
+  <p><%= link_to "トップに戻る", root_path %></p>
+  </div>
