@@ -9,7 +9,20 @@
 <h4>場所</h4>
 <%= @content.place %>
 <h3>コメント</h3>
+<% if @comments.present? %>
 <% @comments.each do |comment| %>
-<%= comment.body %>
+<p><%= comment.body %></p>
+<p><%= User.find(comment.user_id).profile.name %>　<%= comment.created_at %></p>
+<% end %>
+<% else %>
+<p>まだコメントはありません</p>
+<% end %>
+<% if user_signed_in? %>
+<%= form_for @comment,:url => user_content_comments_path(@content.user_id,@content.id) do |f| %>
+<%= f.text_area :body %>
+<p><%= f.submit "コメントを投稿" %></p>
+<% end %>
+<% else %>
+<p>コメントを投稿するにはログインしてください</p>
 <% end %>
 <p><%= link_to "一覧に戻る", user_contents_path %></p>

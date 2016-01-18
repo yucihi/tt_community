@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  #helper_method :get_user_name
   def index
     @contents = current_user.contents.all
   end
@@ -18,7 +19,8 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
-    @comments = @content.comments
+    @comments = @content.comments.all
+    @comment = @content.comments.build
   end
 
   def edit

@@ -19,7 +19,7 @@
 <% @contents.each do |content| %>
 <tr>
 <td><%= content.day %></td>
-<td><%= link_to content.title,user_content_path(content.user_id,content)  %></td>
+<td><%= link_to content.title,user_content_path(content.user_id,content.id)  %></td>
 <td><%= content.place %></td>
 </tr>
 <% end %>
