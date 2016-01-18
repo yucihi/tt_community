@@ -1,7 +1,5 @@
-<h1>Contents#index</h1>
-<p>Find me in app/views/contents/index.html.erb</p>
 <h2>募集一覧</h2>
-<table>
+<table class="table">
 <% @contents.each do |content| %>
 <tr>
 <td>
@@ -12,4 +10,3 @@
 	</tr>
 	<% end %>
 	</table>
-<p><%= link_to "戻る", user_profile_path(current_user,current_user.profile)%></p>
