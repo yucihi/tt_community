@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "TtCommunity" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "TTCommunity" %></title>
   <%= csrf_meta_tags %>
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -73,12 +73,17 @@
             <div class="well sidebar-nav">
               <h4>会員メニュー</h4>
               <% if user_signed_in? %>
+              <% puts current_user.id %>
+              <% if current_user.profile.id.nil? %>
+              <p>会員メニューを表示する為には<%= link_to "ログインもしくは新規登録", new_user_session_path%>をしてください</p>
+              <% else %>
               <ul class="nav nav-list">
-                <li><%= link_to "プロフィール",user_profile_path(current_user,current_user.profile) %></li>
+                <li><%= link_to "プロフィール",user_profile_path(current_user,Profile.find(current_user.id).id) %></li>
                 <li><%= link_to "練習相手を募集する",new_user_content_path(current_user) %></li>
                 <li><%= link_to "自分の募集一覧", user_contents_path(current_user)  %></li>
                 <li><%= link_to "自分のコメント一覧", user_my_comments_index_path(current_user)  %></li>
               </ul>
+              <% end %>
               <% else %>
               <p>会員メニューを表示する為には<%= link_to "ログインもしくは新規登録", new_user_session_path%>をしてください</p>
               <% end %>
@@ -88,7 +93,7 @@
         </div><!--/row-->
 
         <footer>
-        <p class="text-center">&copy; Company 2016</p>
+          <p class="text-center">&copy; Company 2016</p>
         </footer>
 
       </div> <!-- /container -->

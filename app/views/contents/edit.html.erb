@@ -1,13 +1,39 @@
-<h1>Contents#edit</h1>
-<p>Find me in app/views/contents/edit.html.erb</p>
+<h1>投稿を編集</h1>
+<div class="col-sm-12">
 <%= form_for @content, :url => user_content_path(current_user,@content) do |f| %>
-<p><%= f.label :title, "タイトル" %></p>
-<%= f.text_field :title %>
-<p><%= f.label :body, "内容" %></p>
-<%= f.text_field :body %>
-<p><%= f.label :day, "日付" %></p>
-<%= f.date_select :day %>
-<p><%= f.label :place, "場所" %></p>
-<%= f.text_field :place %>
-<p><%= f.submit "変更します"	%></p>
-<% end %>
+	<div class="form-group row">
+		<span class="col-sm-3">
+			<%= f.label :title, "タイトル" %>
+		</span>
+		<span class="col-sm-9">
+			<%= f.text_field :title,:class => "form-control" %>
+		</span>
+	</div>
+	<div class="form-group row">
+		<span class="col-sm-3">
+			<%= f.label :body, "内容" %>
+		</span>
+		<span class="col-sm-9">
+			<%= f.text_area :body,:class => "form-control",:rows => "10" %>
+		</span>
+	</div>
+	<div class="form-group row">
+		<span class="col-sm-3">
+			<%= f.label :day, "日付" %>
+		</span>
+		<span class="col-sm-9">
+			<%= f.date_select :day,:use_month_numbers => true %>
+		</span>
+	</div>
+	<div class="form-group row">
+		<span class="col-sm-3">
+			<%= f.label :place, "場所" %>
+		</span>
+		<span class="col-sm-9">
+			<%= f.text_field :place,:class => "form-control" %>
+		</span>
+	</div>
+	<p class="text-right"><%= f.submit "編集完了"	,:class => "btn btn-default"%></p>
+	<% end %>
+</div>
+
