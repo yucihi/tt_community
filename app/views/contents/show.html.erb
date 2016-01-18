@@ -1,28 +1,53 @@
-<h1>Contents#show</h1>
-<p>Find me in app/views/contents/show.html.erb</p>
-<h4>タイトル</h4>
-<%= @content.title %>
-<h4>内容</h4>
-<%= @content.body %>
-<h4>日付</h4>
-<%= @content.day %>
-<h4>場所</h4>
-<%= @content.place %>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="panel-title"><%= @content.title %></div>
+	</div>
+	<div class="panel-body">
+		<h4>内容</h4>
+		<%= @content.body %>
+		<h4>日付</h4>
+		<%= @content.day.strftime('%Y年%m月%d日') %>
+		<h4>場所</h4>
+		<%= @content.place %>
+	</div>
+	<div class="panel-footer">
+		<div class="row">
+			<div class="col-sm-3 pull-right"><%= @content.created_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日 %H:%M') %></div>
+			<span class="pull-right"><%= @content.user.profile.name %>&nbsp;さん</span>
+		</div>
+	</div>
+</div>
 <h3>コメント</h3>
 <% if @comments.present? %>
-<% @comments.each do |comment| %>
-<p><%= comment.body %></p>
-<p><%= User.find(comment.user_id).profile.name %>　<%= comment.created_at %></p>
+  <% @comments.each do |comment| %>
+    <% if comment.user_id == @content.user_id %>
+    <div class="row"> 
+      <div class="well col-sm-6 left-well">
+	    <p><%= comment.body %></p>
+	    <p class="pull-right"><%= User.find(comment.user_id).profile.name %>(投稿者)　<%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
+	    </div>
+	    <div class="col-sm-6"></div>   
+	    
+    </div>
+    <% else %>
+    <div class="row">
+      <div class="col-sm-6"></div>      
+      <div class="well col-sm-6 right-well">
+	    <p><%= comment.body %></p>
+	    <p class="pull-right"><%= User.find(comment.user_id).profile.name %>　<%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
+	    </div>
+    </div>
+  <% end %>
 <% end %>
 <% else %>
-<p>まだコメントはありません</p>
+  <p>まだコメントはありません</p>
 <% end %>
 <% if user_signed_in? %>
-<%= form_for @comment,:url => user_content_comments_path(@content.user_id,@content.id) do |f| %>
-<%= f.text_area :body %>
-<p><%= f.submit "コメントを投稿" %></p>
+  <%= form_for @comment,:url => user_content_comments_path(@content.user_id,@content.id) do |f| %>
+  <%= f.text_area :body,:class => "form-control"%>
+  <p><%= f.submit "コメントを投稿", :class => "pull-right"%></p>
 <% end %>
 <% else %>
-<p>コメントを投稿するにはログインしてください</p>
+  <p>コメントを投稿するにはログインしてください</p>
 <% end %>
-<p><%= link_to "一覧に戻る", user_contents_path %></p>
+  <p><%= link_to "一覧に戻る", user_contents_path %></p>

@@ -13,4 +13,10 @@
  *= require_tree .
  *= require_self
  */
+header .navbar {
+	background-color: rgba(255, 195, 53, 0.58);
+}
 
+.right-well {
+	background-color: rgba(39, 255, 0, 0.34);
+}
