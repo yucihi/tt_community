@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def index
+    @comments = @current_user.comments.all
   end
 
   def new

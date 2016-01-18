@@ -1,16 +1,5 @@
-<h1>Top#index</h1>
-<p>Find me in app/views/top/index.html.erb</p>
-<% if user_signed_in? %>
-<p><%= current_user.profile.name%>さんがログインしています</p>
-<%= link_to "プロフィール",user_profile_path(current_user,current_user.profile) %>
-<%= link_to "練習相手を募集する",new_user_content_path(current_user) %>
-<% else %>
-<p>ログインしていません</p>
-<% end %>
-<p><%= link_to "ログイン", new_user_session_path %></p>
-<p><%= link_to "サインアップ", new_user_registration_path %></p>
 <h2>現在の募集一覧</h2>
-<table border="1">
+<table class="col-sm-10" border="1">
 <tr>
 <th>日付</th>
 <th>タイトル</th>
