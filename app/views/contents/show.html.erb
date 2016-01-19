@@ -19,34 +19,38 @@
 </div>
 <h3>コメント</h3>
 <% if @comments.present? %>
-  <% @comments.each do |comment| %>
-    <% if comment.user_id == @content.user_id %>
-    <div class="row"> 
-      <div class="well col-sm-6 left-well">
-	    <p><%= comment.body %></p>
-	    <p class="pull-right"><%= User.find(comment.user_id).profile.name %>(投稿者)　<%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
-	    </div>
-	    <div class="col-sm-6"></div>   
-	    
-    </div>
-    <% else %>
-    <div class="row">
-      <div class="col-sm-6"></div>      
-      <div class="well col-sm-6 right-well">
-	    <p><%= comment.body %></p>
-	    <p class="pull-right"><%= User.find(comment.user_id).profile.name %>　<%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
-	    </div>
-    </div>
-  <% end %>
+<% @comments.each do |comment| %>
+<% if comment.user_id == @content.user_id %>
+<div class="row"> 
+	<div class="well col-sm-6 left-well">
+		<p><%= comment.body %></p>
+		<p class="pull-right"><%= User.find(comment.user_id).profile.name %>(投稿者)　<%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
+	</div>
+	<div class="col-sm-6"></div>   
+
+</div>
+<% else %>
+<div class="row">
+	<div class="col-sm-6"></div>      
+	<div class="well col-sm-6 right-well">
+		<p><%= comment.body %></p>
+		<p class="pull-right"><%= User.find(comment.user_id).profile.name %>　<%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
+	</div>
+</div>
+<% end %>
 <% end %>
 <% else %>
-  <p>まだコメントはありません</p>
+<p>まだコメントはありません</p>
 <% end %>
+<div class="row">
 <% if user_signed_in? %>
-  <%= form_for @comment,:url => user_content_comments_path(@content.user_id,@content.id) do |f| %>
-  <%= f.text_area :body,:class => "form-control"%>
-  <p><%= f.submit "コメントを投稿", :class => "pull-right"%></p>
+<div class="form-group">
+	<%= form_for @comment,:url => user_content_comments_path(@content.user_id,@content.id) do |f| %>
+	<%= f.text_area :body,:class => "form-control"%>
+	<%= f.submit "コメントを投稿", :class => "btn btn-primary pull-right"%>
+</div>
 <% end %>
 <% else %>
-  <p>コメントを投稿するには<%= link_to "ログイン", new_user_session_path %>してください</p>
+<p>コメントを投稿するには<%= link_to "ログイン", new_user_session_path %>してください</p>
 <% end %>
+</div>

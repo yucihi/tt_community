@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit]
   #helper_method :get_user_name
   def index
     @contents = current_user.contents.all
