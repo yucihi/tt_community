@@ -32,8 +32,13 @@ class ProfilesController < ApplicationController
   def destroy
   end
 
+  def picture
+    @profile = current_user.profile
+    send_data(@profile.picture_data, :type => @profile.content_type, :disposition => 'inline')
+  end
+
   private
   def profile_params
-    params.require(:profile).permit(:name, :sex, :birthday, :team, :place)
+    params.require(:profile).permit(:name, :sex, :birthday, :team, :place, :picture_file)
   end
 end

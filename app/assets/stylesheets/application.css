@@ -20,3 +20,14 @@ header .navbar {
 .right-well {
 	background-color: rgba(39, 255, 0, 0.34);
 }
+
+
+.pro_img{
+   max-width: 64px;
+   height: auto;
+}
+
+.pro_img{
+   width: auto;
+   max-height: 64px;
+}

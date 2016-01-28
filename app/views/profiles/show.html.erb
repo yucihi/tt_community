@@ -21,6 +21,10 @@
       <td>地域</td>
       <td><%= @profile.place %></td>
     </tr>
+    <tr>
+      <td>プロフィール写真</td>
+      <td><%= image_tag picture_user_profile_path(current_user,@profile),:class => "pro_img img-rounded"%></td>
+      </tr>
   </table>
 </div>
 <div class="row">
